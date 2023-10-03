@@ -12,13 +12,9 @@ function Slider() {
 
     const elementRef = useRef();
 
-    useEffect(() => {
-        getTrendingMovies();
-    }, []);
-
     const getTrendingMovies = async () => {
         try {
-          const response = await GlobalApi.getTrending();
+          const response = await GlobalApi.getTrendingVideos();
           console.log(response.data.results);
           setMovieList(response.data.results);
         } catch (error) {
@@ -26,6 +22,10 @@ function Slider() {
           console.error("Error fetching trending movies:", error);
         }
       };
+    
+      useEffect(() => {
+        getTrendingMovies();
+      }, []);
       
 
 
